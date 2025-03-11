@@ -1,0 +1,20 @@
+
+body {
+    background-color: #948785;
+    color: #200800;
+    font-family: Trebuchet MS;  
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    margin-left: 5%;
+    margin-right: 5%;
+
+    
+  }
+
+  a{
+    color:#200800
+  }
