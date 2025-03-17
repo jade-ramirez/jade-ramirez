@@ -1,23 +1,209 @@
 
-body {
-    background-color: #948785;
-    color: #200800;
-    font-family: Trebuchet MS;  
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    margin-left: 5%;
-    margin-right: 5%;
-
-    
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-
-  a{
-    color:#200800
+ 
+  body {
+    background-color: var(--clr-surface-a0);
+    font-family: 'Wotfard Regular', sans-serif;
+    margin: 0; 
+    padding: 0; 
+    color: var(--clr-primary-a30);
+  
   }
-  ul {
+  li{
+   
     list-style-type: none;
+    text-align: left;
+
+     
   }
+  a{
+     
+    color: var(--clr-primary-a30);
+  }
+  h1{
+     
+ 
+     color: var(--clr-primary-a30);
+    font-weight: bold;
+
+  }
+  h2{
+  
+     
+    color: var(--clr-primary-a30);
+    
+
+  }
+
+  p {
+    
+    
+    text-align: left;
+    color: var(--clr-primary-a30);
+ 
+  }
+
+  li {
+     
+     color: var(--clr-primary-a30);
+     
+  }
+
+  .divider {
+    position: absolute;
+    width: .5px; /* Thickness of the divider */
+    background-color: var(--clr-surface-a30); /* Color of the divider */
+    transform: translateX(-50%); /* Center the divider precisely */
+    top: 2em; /* Distance from the top */
+    bottom: 2em; /* Distance from the bottom */
+    left: 50%; /* Center the divider horizontally */
+  }
+  .title-row {
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    height: 64px; /* Set the height to 64px */
+    padding: 10px; /* Add some padding */
+  
+  }
+.row{
+
+  flex: 1; /* Each column takes up equal space */
+  padding: 10px; /* Add some padding */
+  height: auto; /* Make columns take up the full viewport height */
+  display: flex; /*Enable flexbox */
+  flex-direction: column;
+  justify-content:center;
+  align-items: center; 
+}
+  /* Row container */
+.split {
+    display: flex; /* Use flexbox to create columns */
+    width: 100%; /* Ensure the row takes up the full width */
+   
+  }
+
+  /* Column styling */
+.column {
+    flex: 1; /* Each column takes up equal space */
+    padding: 10px; /* Add some padding */
+    height: 100vh; /* Make columns take up the full viewport height */
+    display: flex; /*Enable flexbox */
+    flex-direction: column;
+    justify-content:center;
+    align-items: center; 
+   
+  }
+
+  /* Responsive design for smaller screens */
+@media screen and (max-width: 600px) {
+    .row {
+      flex-direction: column; /* Stack columns vertically on small screens */
+    }
+    .column {
+      width: 100%; /* Full width for each column on small screens */
+      height: auto; /* Adjust height for stacked layout */
+      justify-content:center;
+      align-items: center; 
+    
+    }
+}
+
+/* Card container */
+.card-container {
+  display: flex;
+  flex-direction: row; /* Ensure horizontal layout */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  gap: 16px; /* Space between cards */
+  padding: 16px; /* Padding around the container */
+  background-color: var(--clr-surface-a0);
+  white-space: nowrap; /* Prevent wrapping */
+   /* Hide scrollbar for WebKit browsers (Chrome, Safari, Edge) */
+   &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for Firefox */
+  scrollbar-width: none;
+
+  /* Hide scrollbar for Internet Explorer */
+  -ms-overflow-style: none;
+}
+
+/* Individual card styling */
+.card {
+  flex: 0 0 auto; /* Prevent cards from shrinking or growing */
+  width: 300px; /* Fixed width for each card */
+  height: 200px; /* Fixed height for each card */
+  background-color: var(--clr-surface-a10);
+  border-radius: 8px;
+  padding: 16px;
+  text-decoration: none;
+  color: var(--clr-light-a0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover effect for cards */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Card content styling */
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+
+:root{
+  /** Base colors */
+--clr-dark-a0: #000000;
+--clr-light-a0: #ffffff;
+
+/** Dark theme primary colors */
+--clr-primary-a0: #c1b59f;
+--clr-primary-a10: #c8bda9;
+--clr-primary-a20: #cfc5b4;
+--clr-primary-a30: #d6cdbe;
+--clr-primary-a40: #dcd5c9;
+--clr-primary-a50: #e3ded3;
+
+/** Dark theme surface colors */
+--clr-surface-a0: #312d26;
+--clr-surface-a10: #45413a;
+--clr-surface-a20: #5a5650;
+--clr-surface-a30: #6f6c67;
+--clr-surface-a40: #86837e;
+--clr-surface-a50: #9d9a97;
+
+/** Dark theme tonal surface colors */
+--clr-surface-tonal-a0: #756d5f;
+--clr-surface-tonal-a10: #837c6f;
+--clr-surface-tonal-a20: #928b80;
+--clr-surface-tonal-a30: #a19b91;
+--clr-surface-tonal-a40: #b0aba3;
+--clr-surface-tonal-a50: #c0bbb5;
+
+
+
+}
+
+@font-face {
+  font-family: 'Wotfard Regular';
+  src: url(font\Wotfard-Regular.woff) format('woff');
+  }
+
+
+
+  
