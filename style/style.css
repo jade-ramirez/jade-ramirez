@@ -1,89 +1,41 @@
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
- 
-  body {
-    background-color: var(--clr-surface-a0);
-    font-family: 'Wotfard Regular', sans-serif;
-    margin: 0; 
-    padding: 0; 
-    color: var(--clr-primary-a30);
-  
-  }
-  li{
-   
-    list-style-type: none;
-    text-align: left;
 
-     
-  }
-  a{
-     
-    color: var(--clr-primary-a30);
-  }
-  h1{
-     
- 
-     color: var(--clr-primary-a30);
-    font-weight: bold;
+body{
 
-  }
-  h2{
-  
-     
-    color: var(--clr-primary-a30);
-    
+  background-color: var(--dark-blue);
+  color:var(--grey-white);
+  font-family: 'Inter-Regular';
+}
 
-  }
+.first-divider {
+  position: absolute;
+  left: 33.33%;
+  transform: translateX(-50%);
+  width: 1px;
+  background-color: var(--grey-white);
+  top: 40px;
+  bottom: 40px;
+}
 
-  p {
-    
-    
-    text-align: left;
-    color: var(--clr-primary-a30);
- 
-  }
-
-  li {
-     
-     color: var(--clr-primary-a30);
-     
-  }
-
-  .divider {
-    position: absolute;
-    width: .5px; /* Thickness of the divider */
-    background-color: var(--clr-surface-a30); /* Color of the divider */
-    transform: translateX(-50%); /* Center the divider precisely */
-    top: 2em; /* Distance from the top */
-    bottom: 2em; /* Distance from the bottom */
-    left: 50%; /* Center the divider horizontally */
-  }
   .title-row {
     display: flex; /* Use flexbox */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
+    justify-content: left; /* Center content horizontally */
+    align-items: left; /* Center content vertically */
     height: 64px; /* Set the height to 64px */
-    padding: 10px; /* Add some padding */
+    padding: 20px; /* Add some padding */
+    padding-left: 3em;
   
   }
 .row{
+  display: flex;
+  height: 100vh; /* Full viewport height */
 
-  flex: 1; /* Each column takes up equal space */
-  padding: 10px; /* Add some padding */
-  height: auto; /* Make columns take up the full viewport height */
-  display: flex; /*Enable flexbox */
-  flex-direction: column;
-  justify-content:center;
-  align-items: center; 
 }
   /* Row container */
 .split {
     display: flex; /* Use flexbox to create columns */
     width: 100%; /* Ensure the row takes up the full width */
+    position: relative; 
    
   }
 
@@ -98,6 +50,23 @@
     align-items: center; 
    
   }
+      /* Grey-white content rectangle */
+      .column > div {
+        background: var(--grey-white); /* Grey-white color */
+        padding: 30px;
+        border-radius: 8px;
+        width: 90%; /* Control width */
+        max-width: 500px; /* Maximum size */
+        height: auto;
+        min-height: 300px; /* Minimum height */
+        box-sizing: border-box;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Optional subtle shadow */
+      display: flex; 
+      flex-direction:column;
+      align-items: flex-start;
+      color:var(--dark-blue)
+    }
+  
 
   /* Responsive design for smaller screens */
 @media screen and (max-width: 600px) {
@@ -120,7 +89,7 @@
   overflow-x: auto; /* Enable horizontal scrolling */
   gap: 16px; /* Space between cards */
   padding: 16px; /* Padding around the container */
-  background-color: var(--clr-surface-a0);
+  background-color: var(--dark-blue);
   white-space: nowrap; /* Prevent wrapping */
    /* Hide scrollbar for WebKit browsers (Chrome, Safari, Edge) */
    &::-webkit-scrollbar {
@@ -139,11 +108,11 @@
   flex: 0 0 auto; /* Prevent cards from shrinking or growing */
   width: 300px; /* Fixed width for each card */
   height: 200px; /* Fixed height for each card */
-  background-color: var(--clr-surface-a10);
+  background-color: var(--grey-white);
   border-radius: 8px;
   padding: 16px;
   text-decoration: none;
-  color: var(--clr-light-a0);
+  color: var(--dark-blue);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -165,45 +134,51 @@
   font-size: 1rem;
 }
 
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px var(--grey-white); /* Line color and thickness */
+}
+
+.divider::before {
+  margin-right: 10px; /* Space between line and text */
+}
+
+.divider::after {
+  margin-left: 10px; /* Space between line and text */
+}
+
+.divider-text {
+  white-space: nowrap; /* Prevent text from wrapping */
+  padding: 0 10px; /* Padding around text */
+}
+
 
 :root{
-  /** Base colors */
---clr-dark-a0: #000000;
---clr-light-a0: #ffffff;
-
-/** Dark theme primary colors */
---clr-primary-a0: #c1b59f;
---clr-primary-a10: #c8bda9;
---clr-primary-a20: #cfc5b4;
---clr-primary-a30: #d6cdbe;
---clr-primary-a40: #dcd5c9;
---clr-primary-a50: #e3ded3;
-
-/** Dark theme surface colors */
---clr-surface-a0: #312d26;
---clr-surface-a10: #45413a;
---clr-surface-a20: #5a5650;
---clr-surface-a30: #6f6c67;
---clr-surface-a40: #86837e;
---clr-surface-a50: #9d9a97;
-
-/** Dark theme tonal surface colors */
---clr-surface-tonal-a0: #756d5f;
---clr-surface-tonal-a10: #837c6f;
---clr-surface-tonal-a20: #928b80;
---clr-surface-tonal-a30: #a19b91;
---clr-surface-tonal-a40: #b0aba3;
---clr-surface-tonal-a50: #c0bbb5;
-
-
-
+/** Base colors */
+--dark-blue: #2C3639;
+--grey-white: #DCD7C9 ;
+--dark-teal: #3F4E4F;
 }
 
 @font-face {
-  font-family: 'Wotfard Regular';
+  font-family: 'Wotfard-Regular';
   src: url(font\Wotfard-Regular.woff) format('woff');
   }
 
+  @font-face {
+    font-family: 'Inter-Regular';
+    src: url(font\Inter-VariableFont_opsz,wght.ttf) format('tff');
+    }
 
 
-  
+
+
