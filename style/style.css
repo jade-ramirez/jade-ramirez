@@ -1,10 +1,30 @@
 
-
 body{
 
   background-color: var(--dark-blue);
   color:var(--grey-white);
-  font-family: 'Inter-Regular';
+  font-family: "Inter";
+  font-style:light;
+}
+
+h1{
+  font-family: "Inter";
+  font-style: bold;
+  font-size: xx-large;
+}
+h2{
+  font-family: "Inter";
+  font-weight: 600;
+  font-size:larger;
+}
+
+h3{
+  font-family: "Inter";
+  font-weight: 600;
+  font-size:medium;
+}
+a{
+  color:var(--grey-white);
 }
 
 .first-divider {
@@ -31,57 +51,53 @@ body{
   height: 100vh; /* Full viewport height */
 
 }
-  /* Row container */
+ /* Row container */
 .split {
-    display: flex; /* Use flexbox to create columns */
-    width: 100%; /* Ensure the row takes up the full width */
-    position: relative; 
-   
-  }
-
-  /* Column styling */
-.column {
-    flex: 1; /* Each column takes up equal space */
-    padding: 10px; /* Add some padding */
-    height: 100vh; /* Make columns take up the full viewport height */
-    display: flex; /*Enable flexbox */
-    flex-direction: column;
-    justify-content:center;
-    align-items: center; 
-   
-  }
-      /* Grey-white content rectangle */
-      .column > div {
-        background: var(--grey-white); /* Grey-white color */
-        padding: 30px;
-        border-radius: 8px;
-        width: 90%; /* Control width */
-        max-width: 500px; /* Maximum size */
-        height: auto;
-        min-height: 300px; /* Minimum height */
-        box-sizing: border-box;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Optional subtle shadow */
-      display: flex; 
-      flex-direction:column;
-      align-items: flex-start;
-      color:var(--dark-blue)
-    }
-  
-
-  /* Responsive design for smaller screens */
-@media screen and (max-width: 600px) {
-    .row {
-      flex-direction: column; /* Stack columns vertically on small screens */
-    }
-    .column {
-      width: 100%; /* Full width for each column on small screens */
-      height: auto; /* Adjust height for stacked layout */
-      justify-content:center;
-      align-items: center; 
-    
-    }
+  display: flex; /* Use flexbox to create columns */
+  width: 100%; /* Ensure the row takes up the full width */
+  position: relative;
+  gap: 16px; /* Add spacing between columns */
 }
 
+/* Column styling */
+.column {
+  flex: 1; /* Each column takes up equal space */
+  padding: 10px; /* Add some padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+}
+
+/* Grey-white content rectangle */
+.column > div {
+  background: var(--grey-white); /* Grey-white color */
+  padding: 30px;
+  border-radius: 0px;
+  width: 90%; /* Control width */
+  max-width: 500px; /* Maximum size */
+  height: 100%; /* Make all rectangles the same height */
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional subtle shadow */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align text to the left */
+  color: var(--dark-blue);
+}
+
+/* Ensure all columns have the same height */
+.split {
+  align-items: stretch; /* Make columns stretch to the same height */
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 600px) {
+  .split {
+    flex-direction: column; /* Stack columns vertically on small screens */
+  }
+  .column {
+    width: 100%; /* Full width for each column on small screens */
+  }
+}
 /* Card container */
 .card-container {
   display: flex;
@@ -103,82 +119,120 @@ body{
   -ms-overflow-style: none;
 }
 
-/* Individual card styling */
 .card {
   flex: 0 0 auto; /* Prevent cards from shrinking or growing */
   width: 300px; /* Fixed width for each card */
   height: 200px; /* Fixed height for each card */
   background-color: var(--grey-white);
-  border-radius: 8px;
+  border-radius: 0px;
   padding: 16px;
   text-decoration: none;
   color: var(--dark-blue);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s, box-shadow 0.2s;
-}
-
-/* Hover effect for cards */
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  overflow: hidden; /* Hide overflow */
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
 }
 
 /* Card content styling */
 .card h3 {
   margin: 0 0 8px;
-  font-size: 1.5rem;
+  font-size: 1.25rem; /* Smaller font size for titles */
+  white-space: normal; /* Allow text wrapping */
+  overflow: hidden;
+  display: -webkit-box;
+ 
+  -webkit-box-orient: vertical;
 }
 
 .card p {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.875rem; /* Smaller font size for paragraphs */
+  white-space: normal; /* Allow text wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add ellipsis if text overflows */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  flex-grow: 1; /* Allow paragraph to take remaining space */
 }
-
+/* Divider container */
 .divider {
   display: flex;
-  align-items: center;
+  align-items: center; /* Vertically center the text */
   text-align: center;
-  margin: 20px 0;
+  margin: 20px 0; /* Adjust spacing as needed */
 }
 
+/* Divider lines */
 .divider::before,
 .divider::after {
   content: '';
-  flex: 1;
-  border-bottom: 1px var(--grey-white); /* Line color and thickness */
+  flex: 1; /* Allow lines to grow and fill space */
+  border-bottom: 1px solid var(--grey-white); /* Line color and thickness */
+  margin: 0 10px; /* Space between text and lines */
 }
 
-.divider::before {
-  margin-right: 10px; /* Space between line and text */
-}
-
-.divider::after {
-  margin-left: 10px; /* Space between line and text */
-}
-
+/* Divider text */
 .divider-text {
-  white-space: nowrap; /* Prevent text from wrapping */
-  padding: 0 10px; /* Padding around text */
+  padding: 0 10px; /* Space around the text */
+  font-family: 'Inter' /* Use your custom font */
+}
+.wrap {
+  display: flex;
 }
 
+.left {
+  flex: 1;
+  display: flex;
+}
 
+.left::after {
+  content: '';
+  border-bottom: 1px dotted;
+  flex: 1;
+  margin: 0 .5em;
+}
+
+/* Style for the bordered button */
+.bordered-button {
+  display: inline-block; /* Make the button inline but allow width/height */
+  width: 74px; /* Fixed width */
+  height: 40px; /* Suggested height (you can adjust this) */
+  padding: 8px; /* Padding inside the button */
+  background-color: transparent; /* Transparent background */
+  border: 2px solid var(--grey-white); /* White border */
+  color: var(--grey-white); /* Text color */
+  align-items: center;
+  align-content: center;
+  text-align: center; /* Center text horizontally */
+  text-decoration: none; /* Remove underline from links */
+  border-radius: 0px; /* Sharp corners (no rounding) */
+  font-size: 0.875rem; /* Font size (adjust as needed) */
+  font-family: 'Inter Small Regular', sans-serif; /* Use your custom font */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+}
+
+/* Hover effect for the button */
+.bordered-button:hover {
+  background-color: var(--grey-white); /* White background on hover */
+  color: var(--dark-blue); /* Dark text on hover */
+}
+
+/* Active effect for the button */
+.bordered-button:active {
+  transform: translateY(1px); /* Slight press effect when clicked */
+}
 :root{
 /** Base colors */
---dark-blue: #2C3639;
---grey-white: #DCD7C9 ;
+--dark-blue: #001519;
+--grey-white: white ;
 --dark-teal: #3F4E4F;
 }
 
-@font-face {
-  font-family: 'Wotfard-Regular';
-  src: url(font\Wotfard-Regular.woff) format('woff');
-  }
 
-  @font-face {
-    font-family: 'Inter-Regular';
-    src: url(font\Inter-VariableFont_opsz,wght.ttf) format('tff');
-    }
-
-
-
-
+:root { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  :root { font-family: 'Inter var', sans-serif; }
+}
