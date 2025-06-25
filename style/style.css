@@ -226,8 +226,8 @@ a{
 }
 :root{
 /** Base colors */
---dark-blue: #1A1A1A;
---grey-white: #E0E0E0;
+--dark-blue: #222222;
+--grey-white: #D8DDDE;
 --dark-teal: #3F4E4F;
 }
 
