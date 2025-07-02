@@ -1,0 +1,170 @@
+
+body {
+  background-color: var(--grey-white);
+  color: var(--dark-blue);
+  font-family: "Inter";
+  font-weight: 300; 
+
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  min-height: 100vh;    
+  margin: 0;          
+}
+
+
+.content-wrapper {
+  max-width: 900px; 
+  width: 90%;
+  text-align: center; 
+  padding: 20px; 
+  box-sizing: border-box; 
+}
+
+h1{
+  font-family: "Inter";
+  font-style: bold;
+  font-size: xx-large;
+}
+h2{
+  font-family: "Inter";
+  font-weight: 600;
+  font-size:larger;
+}
+
+h3{
+  font-family: "Inter";
+  font-weight: 600;
+  font-size:medium;
+}
+     /* General link styling */
+ a {
+color: var(--dark-blue);
+text-decoration: none;
+ font-weight: light;
+}
+ a:hover {
+ text-decoration: underline;
+ }
+
+ .tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: var(--dark-blue);
+  color: var(--grey-white);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+    position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;  /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+ .tree {
+  --spacing: 2rem;
+  --radius: 12px;
+}
+.tree li {
+  display: block;
+  position: relative;
+  padding-left: calc(2 * var(--spacing) - var(--radius) - 2px);
+}
+
+.tree ul {
+  margin-left: calc(var(--radius) - var(--spacing));
+  
+}
+.tree ul li {
+  border-left: 2px solid var(--dark-blue);
+}
+
+.tree ul li:last-child {
+  border-color: transparent;
+}
+
+.tree ul li::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: calc(var(--spacing) / -2);
+  left: -2px;
+  width: calc(var(--spacing) + 2px);
+  height: calc(var(--spacing) + 1px);
+  border: var(--dark-blue) solid 2px;
+  border-width: 0 0 2px 2px;
+}
+.tree summary {
+  display: block;
+  cursor: pointer;
+}
+
+.tree summary::marker,
+.tree summary::-webkit-details-marker {
+  display: none;
+}
+
+.tree summary:focus {
+  outline: none;
+}
+
+.tree summary:focus-visible {
+  outline: 1px dotted #000;
+}
+:root{
+/** Base colors */
+--dark-blue: #222222;
+--grey-white: #D8DDDE;
+--dark-teal: #3F4E4F;
+}
+
+  .top-right-header {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--dark-blue);
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none; /* Ensure it doesn't look like a standard link unless intended */
+        }
+
+        .top-right-header:hover {
+            color: var(--line-color);
+        }
+
+        .top-right-header .arrow {
+            font-size: 0.7em; /* Tiny arrow */
+            transform: rotate(180deg); /* Rotate to point left */
+        }
+
+
+:root { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  :root { font-family: 'Inter var', sans-serif; }
+}
