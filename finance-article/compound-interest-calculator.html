@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>compound interest calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+     <link href="/style/wiki-style.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <style>
+    label {
+            display: block;
+            color: var(--dark-blue);
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 600; /* font-semibold */
+            margin-bottom: 0.5rem; /* mb-2 */
+            text-align: left; /* Align labels left */
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 0.75rem; /* p-3 */
+            border: 1px solid var(--dark-blue); /* Border color from dark-teal */
+            background-color: var(--grey-white);
+            color: var(--dark-blue);
+            transition: all 0.2s ease-in-out;
+            box-sizing: border-box; /* Ensures padding doesn't increase width */
+        }
+
+        input[type="number"]:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(63, 78, 79, 0.3); /* Dark teal shadow */
+            border-color: var(--dark-teal); /* Dark teal border */
+        }
+
+     /* Style for the bordered button */
+      button {
+            display: inline-block; /* Make the button inline but allow width/height */
+            /* Removed fixed width and height to fit text */
+            padding: 10px 18px; /* Increased horizontal padding for better spacing around text */
+            background-color: transparent; /* Transparent background */
+            border: 2px solid var(--dark-blue); /* White border */
+            color: var(--dark-blue); /* Text color */
+            /* Removed align-items and align-content as flex/grid properties, not needed for inline-block */
+            text-align: center; /* Center text horizontally */
+            text-decoration: none; /* Remove underline from links */
+            border-radius: 0px; /* Sharp corners (no rounding) */
+            font-size: 0.875rem; /* Font size (adjust as needed) */
+            font-family: 'Inter', sans-serif; /* Use 'Inter' with sans-serif fallback */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+            margin-top: 0.5rem; /* Add some space above the button */
+            margin-bottom: 1.5rem; /* Add some space below the button */
+        }
+
+/* Hover effect for the button */
+button:hover {
+  background-color: var(--dark-blue); /* White background on hover */
+  color: var(--grey-white); /* Dark text on hover */
+}
+
+/* Active effect for the button */
+button:active {
+  transform: translateY(1px); /* Slight press effect when clicked */
+}
+
+.result-area {
+    margin-top: 2rem; /* mt-8 */
+    padding: 1.5rem; /* p-6 */
+    background-color: var(--grey-white); /* Background from grey-white */
+    border-radius: 0.75rem; /* rounded-xl */
+            border: 1px solid var(--dark-teal); /* Border from dark-teal */
+            color: var(--dark-blue); /* Text color from dark-blue */
+            text-align: left; /* Align result text left */
+        }
+
+        .result-area h2 {
+            font-size: 1.25rem; /* text-xl */
+            font-weight: bold;
+            margin-bottom: 0.75rem; /* mb-3 */
+            color: var(--dark-teal); /* Heading color from dark-teal */
+        }
+
+        .result-area p {
+            margin-bottom: 0.5rem; /* mb-2 */
+        }
+
+        .result-area p span.font-semibold {
+            font-weight: 600;
+        }
+
+        .result-area #futureValue {
+            color: var(--dark-blue); /* Future value color from dark-blue */
+            font-weight: bold;
+        }
+
+        .result-area #totalPrincipalContributed {
+            color: var(--dark-blue); /* Principal contributed color from dark-blue */
+            font-weight: bold;
+        }
+
+        .result-area #totalInterest {
+            color: var(--dark-teal); /* Interest earned color from dark-teal */
+            font-weight: bold;
+        }
+
+        .error-message {
+            margin-top: 1rem; /* mt-4 */
+            padding: 1rem; /* p-4 */
+            background-color: #ffebee; /* Light red for error background */
+            border-radius: 0.5rem; /* rounded-lg */
+            border: 1px solid #ef9a9a; /* Red border */
+            color: #d32f2f; /* Dark red for error text */
+        }
+
+        /* General paragraph styling within content-wrapper */
+        .content-wrapper p {
+            text-align: left; /* Ensure paragraphs are left-aligned */
+            margin-bottom: 1rem; /* Add some spacing between paragraphs */
+        }
+    </style>
+<body>
+    <a href="/personal-finance-wiki.html" class="top-right-header">
+        <span class="arrow">►</span> back to wiki
+    </a>
+     <h1 style="border-bottom: 2px solid var(--dark-blue); font-family: 'Inter', sans-serif; font-style: bold; font-size: xx-large;">compound interest calculator</h1>
+  
+    <div class = "content-wrapper">
+        
+        <div style="margin-bottom: 1.25rem;">
+            <label for="principal">principal amount ($)</label>
+            <input type="number" id="principal" value="1000" min="0" step="0.01" placeholder="e.g., 10000">
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+            <label for="monthlyContribution">monthly contribution ($)</label>
+            <input type="number" id="monthlyContribution" value="100" min="0" step="0.01" placeholder="e.g., 100">
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+            <label for="rate">annual interest rate (%)</label>
+            <input type="number" id="rate" value="5" min="0" step="0.01" placeholder="e.g., 5">
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+            <label for="compounding">compounding frequency</label>
+            <select id="compounding">
+                <option value="1">annually</option>
+                <option value="2">semi-annually</option>
+                <option value="4">quarterly</option>
+                <option value="12" selected>monthly</option>
+                <option value="365">daily</option>
+            </select>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+            <label for="time">investment period (years)</label>
+            <input type="number" id="time" value="10" min="0" step="1" placeholder="e.g., 10">
+        </div>
+
+        <!-- Calculate Button -->
+        <button id="calculateBtn">
+            calculate compound interest
+        </button>
+
+        <!-- Result Display Area -->
+        <div id="result" class="result-area hidden">
+            <h2>calculation result:</h2>
+            <p><span class="font-semibold">future value:</span> <span id="futureValue"></span></p>
+            <p><span class="font-semibold">total principal contributed:</span> <span id="totalPrincipalContributed"></span></p>
+            <p><span class="font-semibold">total interest earned:</span> <span id="totalInterest"></span></p>
+        </div>
+
+        <!-- Error Message Area -->
+        <div id="errorMessage" class="error-message hidden">
+            Please enter valid positive numbers for all fields.
+        </div>
+    
+
+    <script>
+     // Get references to HTML elements
+        const principalInput = document.getElementById('principal');
+        const monthlyContributionInput = document.getElementById('monthlyContribution');
+        const rateInput = document.getElementById('rate');
+        const compoundingSelect = document.getElementById('compounding');
+        const timeInput = document.getElementById('time');
+        const calculateBtn = document.getElementById('calculateBtn');
+        const resultDiv = document.getElementById('result');
+        const futureValueSpan = document.getElementById('futureValue');
+        const totalPrincipalContributedSpan = document.getElementById('totalPrincipalContributed');
+        const totalInterestSpan = document.getElementById('totalInterest');
+        const errorMessageDiv = document.getElementById('errorMessage');
+
+        /**
+         * Calculates the future value of an investment with an initial principal and regular contributions.
+         *
+         * The total future value is the sum of:
+         * 1. The future value of the initial principal (P * (1 + r/n)^(nt))
+         * 2. The future value of a series of payments (annuity formula)
+         * FV_annuity = Pmt * (((1 + r/n)^(nt) - 1) / (r/n))
+         *
+         * Where:
+         * A = Future Value
+         * P = Principal Amount
+         * Pmt = Payment (monthly contribution)
+         * r = Annual Interest Rate (as a decimal)
+         * n = Number of times interest is compounded per year
+         * t = Number of years
+         *
+         * @param {number} principal - The initial principal amount.
+         * @param {number} monthlyContribution - The amount contributed each month.
+         * @param {number} annualRate - The annual interest rate (e.g., 0.05 for 5%).
+         * @param {number} compoundingFrequency - The number of times interest is compounded per year.
+         * @param {number} years - The number of years the money is invested.
+         * @returns {number} The total future value of the investment.
+         */
+        function calculateCompoundInterestWithContributions(principal, monthlyContribution, annualRate, compoundingFrequency, years) {
+            const r = annualRate / 100; // Annual rate as a decimal
+            const n = compoundingFrequency; // Compounding frequency per year
+            const t = years; // Investment period in years
+
+            // Calculate future value of the initial principal
+            const futureValueOfPrincipal = principal * Math.pow((1 + r / n), (n * t));
+
+            let futureValueOfContributions = 0;
+            if (monthlyContribution > 0) {
+                const monthlyRate = r / 12; // Monthly interest rate
+                const totalMonths = t * 12; // Total number of monthly periods
+
+                if (monthlyRate === 0) {
+                    futureValueOfContributions = monthlyContribution * totalMonths;
+                } else {
+                    // Future value of an ordinary annuity (payments at end of period)
+                    futureValueOfContributions = monthlyContribution * ( (Math.pow((1 + monthlyRate), totalMonths) - 1) / monthlyRate );
+                }
+            }
+
+            // Total future value is the sum of both
+            return futureValueOfPrincipal + futureValueOfContributions;
+        }
+
+        /**
+         * Formats a number as a currency string.
+         * @param {number} amount - The number to format.
+         * @returns {string} The formatted currency string (e.g., "$1,234.56").
+         */
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+
+        /**
+         * Handles the click event for the calculate button.
+         * Retrieves input values, performs validation, calculates interest, and displays results.
+         */
+        calculateBtn.addEventListener('click', () => {
+            // Get values from input fields
+            const principal = parseFloat(principalInput.value);
+            const monthlyContribution = parseFloat(monthlyContributionInput.value);
+            const rate = parseFloat(rateInput.value);
+            const compounding = parseInt(compoundingSelect.value); // n value
+            const time = parseFloat(timeInput.value);
+
+            // Basic input validation
+            if (isNaN(principal) || isNaN(monthlyContribution) || isNaN(rate) || isNaN(time) ||
+                principal < 0 || monthlyContribution < 0 || rate < 0 || time < 0) {
+                errorMessageDiv.classList.remove('hidden');
+                resultDiv.classList.add('hidden'); // Hide result if there's an error
+                return; // Stop execution if validation fails
+            } else {
+                errorMessageDiv.classList.add('hidden'); // Hide error message if inputs are valid
+            }
+
+            // Calculate the future value
+            const futureValue = calculateCompoundInterestWithContributions(principal, monthlyContribution, rate, compounding, time);
+
+            // Calculate total principal contributed (initial + monthly contributions)
+            const totalPrincipalContributed = principal + (monthlyContribution * time * 12);
+
+            // Calculate the total interest earned
+            const totalInterest = futureValue - totalPrincipalContributed;
+
+            // Display the results, formatted as currency
+            futureValueSpan.textContent = formatCurrency(futureValue);
+            totalPrincipalContributedSpan.textContent = formatCurrency(totalPrincipalContributed);
+            totalInterestSpan.textContent = formatCurrency(totalInterest);
+
+            // Show the result div
+            resultDiv.classList.remove('hidden');
+        });
+
+        // Initial calculation on page load with default values
+        document.addEventListener('DOMContentLoaded', () => {
+            calculateBtn.click(); // Simulate a click to show initial results
+        });
+    </script>
+    </body>
+</head>
+
+
+
+
+
+
+
+
+</html>
