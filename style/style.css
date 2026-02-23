@@ -89,6 +89,7 @@ a{
   align-items: stretch; /* Make columns stretch to the same height */
 }
 
+
 /* Responsive design for smaller screens */
 @media screen and (max-width: 600px) {
   .split {
@@ -96,6 +97,55 @@ a{
   }
   .column {
     width: 100%; /* Full width for each column on small screens */
+  }
+}
+
+.experience-section {
+  padding: 6em;
+  padding-top: 3em;
+  padding-bottom: 3em;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.job {
+  margin-bottom: 2em;
+}
+
+.job-header {
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.job-header span.sep {
+  font-weight: 300;
+  opacity: 0.5;
+  margin: 0 0.4em;
+}
+
+.job-header span.company {
+  font-weight: 300;
+}
+
+.job-sub {
+  font-size: 0.85em;
+  opacity: 0.6;
+  margin-top: 0.2em;
+  font-weight: 300;
+}
+.job-desc {
+  margin-top: 0.75em;
+  font-weight: 300;
+  line-height: 1.8em;
+  font-size: 0.95em;
+  opacity: 0.85;
+}
+
+@media (max-width: 700px) {
+  .experience-section {
+    padding: 2em;
+    padding-top: 2em;
   }
 }
 /* Card container */
